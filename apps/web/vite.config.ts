@@ -8,10 +8,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
-      "@che-speak/shared-types": path.resolve(
-        import.meta.dirname,
-        "../../packages/shared-types/src/index.ts",
-      ),
     },
   },
   server: {

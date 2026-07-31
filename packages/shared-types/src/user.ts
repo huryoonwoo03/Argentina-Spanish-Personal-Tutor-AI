@@ -1,4 +1,4 @@
-import type { LearningPace, VocabularyLevel } from "./common";
+import type { LearningPace, VocabularyLevel } from "./common.js";
 
 export interface Profile {
   id: string;

@@ -1,4 +1,4 @@
-import type { ContentType, VocabularyLevel } from "./common";
+import type { ContentType, VocabularyLevel } from "./common.js";
 
 export interface LessonExercise {
   id: string;

@@ -1,4 +1,4 @@
-import type { VocabularyCategory, VocabularyLevel } from "./common";
+import type { VocabularyCategory, VocabularyLevel } from "./common.js";
 
 export interface VocabularyExample {
   spanish: string;

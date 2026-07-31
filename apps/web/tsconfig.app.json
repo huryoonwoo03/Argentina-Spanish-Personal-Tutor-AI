@@ -16,8 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["./src/*"],
-      "@che-speak/shared-types": ["../../packages/shared-types/src/index.ts"]
+      "@/*": ["./src/*"]
     },
 
     /* Linting */

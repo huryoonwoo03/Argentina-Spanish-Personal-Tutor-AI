@@ -12,10 +12,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@che-speak/shared-types": ["../../packages/shared-types/src/index.ts"]
-    }
+    "resolveJsonModule": true
   },
   "include": ["src"]
 }
