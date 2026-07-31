@@ -1,13 +1,15 @@
-import { Repeat } from "lucide-react";
-import { FeaturePlaceholder } from "@/components/feature-placeholder";
+import { PracticeFlow } from "@/features/practice/practice-flow";
 
 export function ShadowingPage() {
   return (
-    <FeaturePlaceholder
-      icon={Repeat}
-      title="Shadowing"
-      description="Listen, repeat, and get immediate feedback on how close you sound to a native speaker."
-      module="Module 7"
-    />
+    <div className="flex flex-col gap-6">
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight">Shadowing</h1>
+        <p className="text-sm text-muted-foreground">
+          Say it in your head the way a porteño would, then repeat it out loud and compare.
+        </p>
+      </div>
+      <PracticeFlow basePath="/api/v1/shadowing" hint="Shadow this phrase" />
+    </div>
   );
 }

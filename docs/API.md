@@ -42,19 +42,25 @@ Response envelope:
 
 ## practice
 
-- `POST /practice/sessions` — create session: reference text/audio prompt
-- `POST /practice/sessions/:id/audio` — upload recorded audio (multipart)
-- `POST /practice/sessions/:id/score` — run STT + PronunciationScorer,
-  persist and return `{ rhythm, intonation, authenticity, phonemeNotes,
-  coaching }`
+- `POST /practice/sessions` — create session: `{ referenceText }`
+- `POST /practice/sessions/:id/score` — multipart `audio` upload; runs STT +
+  PronunciationScorer in one call (upload and scoring are combined rather
+  than split into two round-trips, since there's no intermediate use for
+  an unscored recording), persists the audio to the `practice-audio`
+  storage bucket, and returns the updated session with
+  `pronunciationScore: { rhythm, intonation, authenticity, overall,
+  phonemeNotes, coaching }`
 - `GET /practice/sessions/:id`
-- `GET /practice/sessions` — history, paginated
+- `GET /practice/sessions` — history, most recent first
 
 ## shadowing
 
-- `GET /shadowing/clips` — native audio clips (filterable by level/topic)
-- `POST /shadowing/clips/:id/attempts` — same scoring pipeline as practice,
-  tagged `session_type = shadowing`
+Mounted at `/shadowing` using the **same routes and pipeline as
+practice** (`createPracticeRouter("shadowing")`), differing only in the
+`session_type` recorded. A dedicated native-audio "clips" catalog (listen
+to a real Rioplatense recording, then shadow it) is a follow-up once real
+voice assets exist — today the learner reads a reference sentence rather
+than shadowing recorded native audio.
 
 ## conversation
 
