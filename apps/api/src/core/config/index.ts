@@ -1,14 +1,19 @@
 import "dotenv/config";
 import { z } from "zod";
 
+// Treat an empty string (e.g. `SUPABASE_URL=` from .env.example) as unset so
+// optional keys degrade gracefully instead of failing validation.
+const optional = <T extends z.ZodTypeAny>(schema: T) =>
+  z.preprocess((v) => (v === "" ? undefined : v), schema.optional());
+
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().default(4000),
-  SUPABASE_URL: z.string().url().optional(),
-  SUPABASE_SERVICE_ROLE_KEY: z.string().optional(),
-  ANTHROPIC_API_KEY: z.string().optional(),
-  ELEVENLABS_API_KEY: z.string().optional(),
-  OPENAI_API_KEY: z.string().optional(),
+  SUPABASE_URL: optional(z.string().url()),
+  SUPABASE_SERVICE_ROLE_KEY: optional(z.string()),
+  ANTHROPIC_API_KEY: optional(z.string()),
+  ELEVENLABS_API_KEY: optional(z.string()),
+  OPENAI_API_KEY: optional(z.string()),
   CORS_ORIGIN: z.string().default("http://localhost:5173"),
 });
 
