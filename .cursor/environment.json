@@ -1,0 +1,24 @@
+{
+  "name": "Che, Speak!",
+  "install": "npm ci && { [ -f apps/api/.env ] || cp apps/api/.env.example apps/api/.env; } && { [ -f apps/web/.env.local ] || cp apps/web/.env.example apps/web/.env.local; } && npm run build -w packages/shared-types",
+  "terminals": [
+    {
+      "name": "api",
+      "command": "npm run dev:api"
+    },
+    {
+      "name": "web",
+      "command": "npm run dev:web"
+    }
+  ],
+  "ports": [
+    {
+      "name": "api",
+      "port": 4000
+    },
+    {
+      "name": "web",
+      "port": 5173
+    }
+  ]
+}
